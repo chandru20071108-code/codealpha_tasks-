@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>DineManager – Restaurant System</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand">🍽️ DineManager</div>
+    <div class="nav-links">
+      <button class="nav-btn active" data-view="menu">Menu</button>
+      <button class="nav-btn" data-view="orders">Orders</button>
+      <button class="nav-btn" data-view="tables">Tables</button>
+      <button class="nav-btn" data-view="reports">Reports</button>
+    </div>
+  </nav>
+
+  <main class="container">
+
+    <!-- ── MENU VIEW ── -->
+    <section id="view-menu" class="view active">
+      <div class="view-header">
+        <h2>🍛 Menu</h2>
+        <div class="filter-bar" id="catFilters"></div>
+      </div>
+      <div id="menuGrid" class="menu-grid">
+        <div class="loading"><div class="spinner"></div><p>Loading menu…</p></div>
+      </div>
+    </section>
+
+    <!-- ── ORDERS VIEW ── -->
+    <section id="view-orders" class="view">
+      <div class="view-header">
+        <h2>📋 Place & Manage Orders</h2>
+        <button class="btn-primary" id="newOrderBtn">+ New Order</button>
+      </div>
+      <!-- New Order Form -->
+      <div id="orderFormCard" class="card" hidden>
+        <h3>New Order</h3>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Table # (optional)</label>
+            <input type="number" id="orderTable" placeholder="e.g. 3" min="1"/>
+          </div>
+          <div class="form-group">
+            <label>Notes</label>
+            <input type="text" id="orderNotes" placeholder="Special instructions…"/>
+          </div>
+        </div>
+        <div id="orderItemsForm">
+          <div class="order-item-row" data-idx="0">
+            <select class="item-select"></select>
+            <input type="number" class="item-qty" value="1" min="1" placeholder="Qty"/>
+            <button class="btn-remove-item">✕</button>
+          </div>
+        </div>
+        <div class="order-actions">
+          <button class="btn-secondary" id="addItemRowBtn">+ Add Item</button>
+          <button class="btn-primary" id="submitOrderBtn">Place Order</button>
+        </div>
+        <div id="orderMsg" class="msg" hidden></div>
+      </div>
+
+      <h3 style="margin-top:1.5rem">All Orders</h3>
+      <div id="orderList" class="order-list">
+        <div class="loading"><div class="spinner"></div></div>
+      </div>
+    </section>
+
+    <!-- ── TABLES VIEW ── -->
+    <section id="view-tables" class="view">
+      <div class="view-header"><h2>🪑 Tables & Reservations</h2></div>
+      <div id="tableGrid" class="table-grid">
+        <div class="loading"><div class="spinner"></div><p>Loading tables…</p></div>
+      </div>
+    </section>
+
+    <!-- ── REPORTS VIEW ── -->
+    <section id="view-reports" class="view">
+      <div class="view-header"><h2>📊 Reports & Analytics</h2></div>
+      <div id="reportContent">
+        <div class="loading"><div class="spinner"></div><p>Loading…</p></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Reserve Modal -->
+  <div id="reserveModal" class="modal-overlay" hidden>
+    <div class="modal">
+      <button class="modal-close" id="reserveClose">✕</button>
+      <h3 id="reserveTitle">Reserve Table</h3>
+      <div id="reserveMsg" class="msg" hidden></div>
+      <form id="reserveForm" novalidate>
+        <input type="hidden" id="reserveTableId"/>
+        <div class="form-group"><label>Customer Name *</label><input type="text" id="resCustName" required placeholder="Full name"/></div>
+        <div class="form-group"><label>Phone</label><input type="tel" id="resCustPhone" placeholder="+91 98765 43210"/></div>
+        <div class="form-group"><label>Party Size *</label><input type="number" id="resPartySize" required min="1" placeholder="Number of guests"/></div>
+        <div class="form-row">
+          <div class="form-group"><label>Date *</label><input type="date" id="resDate" required/></div>
+          <div class="form-group"><label>Time *</label><input type="time" id="resTime" required/></div>
+        </div>
+        <button type="submit" class="btn-primary full-width">Confirm Reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

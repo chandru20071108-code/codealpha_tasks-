@@ -1,0 +1,112 @@
+/* ── Reset & Variables ─────────────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#f97316; --primary-dark:#ea580c;
+  --accent:#ec4899;  --accent-dark:#db2777;
+  --bg:#fff7ed;      --card:#ffffff;
+  --text:#1c1917;    --muted:#78716c;
+  --border:#e7e5e4;
+  --success-bg:#f0fdf4; --success:#15803d; --success-b:#86efac;
+  --error-bg:#fef2f2;   --error:#b91c1c;   --error-b:#fca5a5;
+  --radius:14px; --shadow:0 4px 24px rgba(0,0,0,.08);
+}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+
+/* ── Navbar ────────────────────────────────────────────────────────────── */
+.navbar{display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 1px 8px rgba(0,0,0,.06)}
+.nav-brand{display:flex;align-items:center;gap:.5rem;font-size:1.25rem;font-weight:800;color:var(--primary)}
+.nav-links{display:flex;gap:.5rem}
+.nav-btn{padding:.5rem 1.1rem;border:none;border-radius:8px;font-size:.88rem;font-weight:600;cursor:pointer;background:transparent;color:var(--muted);transition:all .2s}
+.nav-btn:hover{background:#fff7ed;color:var(--primary)}
+.nav-btn.active{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff}
+
+/* ── Hero ──────────────────────────────────────────────────────────────── */
+.hero{background:linear-gradient(135deg,var(--primary) 0%,var(--accent) 100%);color:#fff;padding:3.5rem 2rem;text-align:center}
+.hero h1{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;line-height:1.2;margin-bottom:.7rem}
+.hero p{font-size:1.05rem;opacity:.9}
+
+/* ── Container / Views ─────────────────────────────────────────────────── */
+.container{max-width:1100px;margin:0 auto;padding:2.5rem 1.5rem}
+.view{display:none}.view.active{display:block}
+.section-title{font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;color:var(--text)}
+
+/* ── Event Grid ────────────────────────────────────────────────────────── */
+.event-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
+.event-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:transform .2s,box-shadow .2s;cursor:pointer}
+.event-card:hover{transform:translateY(-4px);box-shadow:0 10px 32px rgba(0,0,0,.12)}
+.event-card-banner{height:7px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+.event-card-body{padding:1.3rem}
+.event-card-date{font-size:.8rem;font-weight:600;color:var(--primary);margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.04em}
+.event-card-title{font-size:1.1rem;font-weight:700;margin-bottom:.5rem;color:var(--text)}
+.event-card-desc{font-size:.88rem;color:var(--muted);line-height:1.5;margin-bottom:1rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.event-card-footer{display:flex;align-items:center;justify-content:space-between}
+.event-card-loc{font-size:.82rem;color:var(--muted)}
+.badge{display:inline-block;padding:.25rem .7rem;border-radius:999px;font-size:.78rem;font-weight:600}
+.badge-available{background:#fff7ed;color:var(--primary)}
+.badge-full{background:#fef2f2;color:var(--error)}
+.btn-register{margin-top:1rem;width:100%;padding:.6rem;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border:none;border-radius:8px;font-weight:600;cursor:pointer;font-size:.9rem;transition:opacity .15s}
+.btn-register:hover{opacity:.88}
+.btn-register:disabled{background:#d4d4d4;cursor:not-allowed;opacity:1}
+
+/* ── Event Detail ──────────────────────────────────────────────────────── */
+.btn-back{background:none;border:none;color:var(--primary);font-weight:600;font-size:.95rem;cursor:pointer;margin-bottom:1.5rem;padding:0;display:flex;align-items:center;gap:.3rem}
+.btn-back:hover{text-decoration:underline}
+.detail-card{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+.detail-banner{height:10px;background:linear-gradient(90deg,var(--primary),var(--accent))}
+.detail-body{padding:2rem}
+.detail-title{font-size:1.8rem;font-weight:800;margin-bottom:.5rem}
+.detail-meta{display:flex;flex-wrap:wrap;gap:1rem;margin:1rem 0;font-size:.9rem;color:var(--muted)}
+.detail-meta span{display:flex;align-items:center;gap:.35rem}
+.detail-desc{color:var(--muted);line-height:1.7;margin-bottom:1.5rem}
+.detail-capacity{background:#fff7ed;border-radius:10px;padding:1rem;margin-bottom:1.5rem;font-size:.9rem;color:var(--primary);font-weight:500}
+.capacity-bar{background:#fed7aa;border-radius:999px;height:8px;margin-top:.5rem;overflow:hidden}
+.capacity-fill{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:999px;transition:width .4s}
+
+/* ── My Registrations ──────────────────────────────────────────────────── */
+.lookup-box{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.lookup-box input{flex:1;min-width:220px;padding:.75rem 1rem;border:2px solid var(--border);border-radius:10px;font-size:.95rem;font-family:inherit;outline:none}
+.lookup-box input:focus{border-color:var(--primary)}
+.reg-list{display:flex;flex-direction:column;gap:1rem}
+.reg-item{background:var(--card);border-radius:var(--radius);box-shadow:var(--shadow);padding:1.2rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.reg-item-info{flex:1}
+.reg-item-event{font-weight:700;font-size:1rem;margin-bottom:.2rem}
+.reg-item-meta{font-size:.83rem;color:var(--muted)}
+.badge-confirmed{background:#f0fdf4;color:var(--success)}
+.badge-cancelled{background:#f5f5f5;color:#a3a3a3}
+.btn-cancel{padding:.45rem .9rem;border-radius:7px;border:1.5px solid var(--error-b);background:#fff;color:var(--error);font-size:.82rem;font-weight:600;cursor:pointer;transition:background .15s}
+.btn-cancel:hover{background:var(--error-bg)}
+
+/* ── Buttons ───────────────────────────────────────────────────────────── */
+.btn-primary{padding:.75rem 1.4rem;background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;border:none;border-radius:10px;font-size:.95rem;font-weight:600;font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;gap:.4rem;transition:opacity .15s;white-space:nowrap}
+.btn-primary:hover{opacity:.88}
+.btn-primary.full-width{width:100%;justify-content:center}
+.btn-primary:disabled{opacity:.6;cursor:not-allowed}
+
+/* ── Modal ─────────────────────────────────────────────────────────────── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);display:flex;align-items:center;justify-content:center;z-index:200;padding:1rem;animation:fadeIn .2s}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal{background:#fff;border-radius:var(--radius);width:min(480px,100%);padding:2rem;position:relative;animation:slideUp .25s}
+@keyframes slideUp{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
+.modal-close{position:absolute;top:.8rem;right:.8rem;background:none;border:none;font-size:1.1rem;cursor:pointer;color:var(--muted);line-height:1}
+.modal h3{font-size:1.3rem;font-weight:700;margin-bottom:1.2rem}
+.modal-msg{padding:.7rem 1rem;border-radius:8px;font-size:.88rem;font-weight:500;border:1.5px solid;margin-bottom:1rem}
+.modal-msg.success{background:var(--success-bg);color:var(--success);border-color:var(--success-b)}
+.modal-msg.error{background:var(--error-bg);color:var(--error);border-color:var(--error-b)}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.85rem;font-weight:600;margin-bottom:.35rem;color:var(--text)}
+.form-group input{width:100%;padding:.7rem 1rem;border:2px solid var(--border);border-radius:9px;font-size:.93rem;font-family:inherit;outline:none;transition:border-color .2s}
+.form-group input:focus{border-color:var(--primary)}
+
+/* ── Loading / Empty ───────────────────────────────────────────────────── */
+.loading-spinner{text-align:center;padding:3rem;color:var(--muted)}
+.spinner{width:40px;height:40px;border:4px solid #fed7aa;border-top-color:var(--primary);border-radius:50%;animation:spin .7s linear infinite;margin:0 auto 1rem}
+@keyframes spin{to{transform:rotate(360deg)}}
+.empty-state{text-align:center;padding:3rem;color:var(--muted);font-size:.95rem}
+.empty-state .icon{font-size:3rem;margin-bottom:.8rem}
+
+/* ── Responsive ────────────────────────────────────────────────────────── */
+@media(max-width:600px){
+  .navbar{padding:.8rem 1rem}
+  .container{padding:1.5rem 1rem}
+  .detail-body{padding:1.3rem}
+}
